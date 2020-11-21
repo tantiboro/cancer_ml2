@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+
+<head>
+    <title>Bike Usage Model</title>
+</head>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        <div>
+            <p>Concave Points Worst</p>
+            <input type="text" name = "concave_points_worst" id="concave_points_worst">
+        </div>
+        
+        <div>
+            <p>Area Worst</p>
+            <input type="text" name = "area_worst" id="area_worst">
+        </div>
+
+        <div>
+            <p>Radius Worst</p>
+            <input type="text" name = "radius_worst" id="radius_worst">
+        </div>
+
+        <div>
+            <p>Perimeter Worst</p>
+            <input type="text" name = "perimeter_worst" id="perimeter_worst">
+        </div>
+
+        <div>
+            <p>Concave Points Mean</p>
+            <input type="text" name = "concave_points_mean" id="concave_points_mean">
+        </div>
+
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+    	{% for variable, value in original_input.items() %}
+    		<b>{{ variable }}</b> : {{ value }}
+    	{% endfor %}
+		<br>
+    	<br> Predicted number of bikes in use:
+   		<p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+
+</html>
+
+<!-- <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+</head>
+<div>
+    <h1>Cancer PREDICTOR</h1>
+
+    <form action="/predict" method="POST">
+        <div>
+            <p>Concave Points Worst</p>
+            <input type="text" name = "concave_points_worst" id="concave_points_worst">
+        </div>
+        
+        <div>
+            <p>Area Worst</p>
+            <input type="text" name = "area_worst" id="area_worst">
+        </div>
+
+        <div>
+            <p>Radius Worst</p>
+            <input type="text" name = "radius_worst" id="radius_worst">
+        </div>
+
+        <div>
+            <p>Perimeter Worst</p>
+            <input type="text" name = "perimeter_worst" id="perimeter_worst">
+        </div>
+
+        <div>
+            <p>Concave Points Mean</p>
+            <input type="text" name = "concave_points_mean" id="concave_points_mean">
+        </div>
+
+        <input type="submit" value="Predict">
+    </form>
+    <h2>Predicted: {{pred}}</h2>
+</div>
+</html> -->
